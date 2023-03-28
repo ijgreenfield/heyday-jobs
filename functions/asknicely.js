@@ -1,14 +1,35 @@
+import { useMutation } from '@apollo/client';
 import client from '../graphql/apollo-client'
 import UserOperations from '../graphql/operations/asknicely'
 
 
 exports.handler = async function(event, context) {
     const body = JSON.parse(event.body);
+    const [createEvent, {data, loading, error}] = useMutation(UserOperations.Mutations.createEvent)
+    //const createEvent = async (body) => {
+        //const { data } = await client.mutate({
+           // mutation: UserOperations.Mutations.createEvent,
+           // variables: { input: {
+           // "type": "custom_asknicely_response",
+           // "payload": JSON.stringify({
+           //     email: body.person.email,
+           //     segment: body.person.segment,
+            //    score: body.question.score,
+           //     comment: body.question.comment
+           // }),
+           // }}
+       // })
 
-    const createEvent = async (body) => {
-        const { data } = await client.mutate({
-            mutation: UserOperations.Mutations.createEvent,
-            variables: { input: {
+        //if (data) {
+        //    return data;
+        //}
+        
+       // return null;
+    //}
+    
+    try {
+      createEvent({ variables: {
+        input: {
             "type": "custom_asknicely_response",
             "payload": JSON.stringify({
                 email: body.person.email,
@@ -16,18 +37,8 @@ exports.handler = async function(event, context) {
                 score: body.question.score,
                 comment: body.question.comment
             }),
-            }}
-        })
-
-        if (data) {
-            return data;
         }
-        
-        return null;
-    }
-    
-    try {
-      createEvent(body)
+      }});
       console.log(body)
     } catch(error) {
       console.log(error)
