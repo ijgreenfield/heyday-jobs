@@ -4,6 +4,7 @@ import UserOperations from '../graphql/operations/asknicely'
 
 exports.handler = async function(event, context) {
     const body = JSON.parse(event.body);
+
     const createEvent = async (body) => {
         const { data } = await client.mutate({
             mutation: UserOperations.Mutations.createEvent,
