@@ -1,4 +1,4 @@
-import client from '@/graphql/apollo-client'
+import client from '../graphql/apollo-client'
 import UserOperations from '../graphql/operations/asknicely'
 
 exports.handler = async function(event, context) {
