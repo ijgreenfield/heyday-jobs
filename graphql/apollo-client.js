@@ -1,8 +1,8 @@
-import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
+import { ApolloClient, InMemoryCache, HttpLink } from "@apollo/client";
 import fetch from "cross-fetch";
 
 const client = new ApolloClient({
-    link: createHttpLink({
+    link: new HttpLink({
       uri: 'https://prod-00.heyday.solvestack.net/graphql',
       fetch,
       headers: {
