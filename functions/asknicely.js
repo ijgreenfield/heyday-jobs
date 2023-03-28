@@ -28,7 +28,7 @@ exports.handler = async function(event, context) {
     
     try {
       createEvent(body)
-      console.log(createEvent(body))
+      console.log(await createEvent(body))
     } catch(error) {
       console.log(error)
     }
