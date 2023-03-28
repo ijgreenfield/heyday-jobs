@@ -1,4 +1,5 @@
 import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
+import fetch from "node-fetch";
 
 const client = new ApolloClient({
     link: new createHttpLink({

@@ -1,5 +1,6 @@
 import client from '../graphql/apollo-client'
 import UserOperations from '../graphql/operations/asknicely'
+import fetch from 'node-fetch';
 
 const createEvent = async (body) => {
     const { data } = await client.mutate({
