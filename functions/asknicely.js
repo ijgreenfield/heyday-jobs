@@ -17,8 +17,12 @@ exports.handler = async function(event, context) {
             }),
             }}
         })
+
+        if (data) {
+            return data;
+        }
         
-        return data;
+        return null;
     }
     
     try {
