@@ -4,7 +4,7 @@ import UserOperations from '../graphql/operations/asknicely'
 
 exports.handler = async function(event, context) {
     const body = JSON.parse(event.body);
-
+    const isoDateString = new Date().toISOString();
     const createEvent = async (body) => {
         const { data } = await client.mutate({
             mutation: UserOperations.Mutations.createEvent,
@@ -16,6 +16,7 @@ exports.handler = async function(event, context) {
                 score: body.question.score,
                 comment: body.question.comment
             }),
+            "event_time": isoDateString
             }}
         });
 
